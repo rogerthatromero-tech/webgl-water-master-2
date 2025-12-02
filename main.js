@@ -134,10 +134,11 @@ window.onload = function() {
     } else if (Math.abs(pointOnPlane.x) < 1 && Math.abs(pointOnPlane.z) < 1) {
       mode = MODE_ADD_DROPS;
       duringDrag(x, y);
-    } else {
-      mode = MODE_ORBIT_CAMERA;
-    }
+  } else {
+    // disable camera orbit when clicking outside water/sphere
+    mode = -1;
   }
+}
 
   function duringDrag(x, y) {
     switch (mode) {
@@ -165,12 +166,11 @@ window.onload = function() {
         if (paused) renderer.updateCaustics(water);
         break;
       }
-      case MODE_ORBIT_CAMERA: {
-        angleY -= x - oldX;
-        angleX -= y - oldY;
-        angleX = Math.max(-89.999, Math.min(89.999, angleX));
-        break;
-      }
+case MODE_ORBIT_CAMERA: {
+  // camera orbit disabled
+  break;
+}
+
     }
     oldX = x;
     oldY = y;
