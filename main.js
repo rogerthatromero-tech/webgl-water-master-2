@@ -31,7 +31,7 @@ var renderer;
 
 // Adjust these to lock your default camera view:
 var angleX = 0;   // tilt up/down
-var angleY = -200;  // rotate around the pool
+var angleY = -220;  // rotate around the pool
 
 
 // Sphere physics info
