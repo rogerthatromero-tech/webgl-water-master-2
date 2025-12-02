@@ -28,8 +28,11 @@ var gl = GL.create();
 var water;
 var cubemap;
 var renderer;
-var angleX = -25;
-var angleY = -200.5;
+
+// Adjust these to lock your default camera view:
+var angleX = -20;   // tilt up/down
+var angleY = -180;  // rotate around the pool
+
 
 // Sphere physics info
 var useSpherePhysics = false;
