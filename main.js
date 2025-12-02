@@ -30,8 +30,8 @@ var cubemap;
 var renderer;
 
 // Adjust these to lock your default camera view:
-var angleX = -20;   // tilt up/down
-var angleY = -180;  // rotate around the pool
+var angleX = 0;   // tilt up/down
+var angleY = -200;  // rotate around the pool
 
 
 // Sphere physics info
