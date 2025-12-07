@@ -28,11 +28,8 @@ var gl = GL.create();
 var water;
 var cubemap;
 var renderer;
-
-// Adjust these to lock your default camera view:
-var angleX = 0;   // tilt up/down
-var angleY = -180;  // rotate around the pool
-
+var angleX = -25;
+var angleY = -200.5;
 
 // Sphere physics info
 var useSpherePhysics = false;
@@ -134,11 +131,10 @@ window.onload = function() {
     } else if (Math.abs(pointOnPlane.x) < 1 && Math.abs(pointOnPlane.z) < 1) {
       mode = MODE_ADD_DROPS;
       duringDrag(x, y);
-  } else {
-    // disable camera orbit when clicking outside water/sphere
-    mode = -1;
+    } else {
+      mode = MODE_ORBIT_CAMERA;
+    }
   }
-}
 
   function duringDrag(x, y) {
     switch (mode) {
@@ -166,11 +162,12 @@ window.onload = function() {
         if (paused) renderer.updateCaustics(water);
         break;
       }
-case MODE_ORBIT_CAMERA: {
-  // camera orbit disabled
-  break;
-}
-
+      case MODE_ORBIT_CAMERA: {
+        angleY -= x - oldX;
+        angleX -= y - oldY;
+        angleX = Math.max(-89.999, Math.min(89.999, angleX));
+        break;
+      }
     }
     oldX = x;
     oldY = y;
